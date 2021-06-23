@@ -1,0 +1,18 @@
+import requests
+#import os
+from dateline import dateline
+api_key = '622abb51f858e8312deb2c2d65324554'
+location = input("enter the city name:")
+complete_api_link = "https://api.openweathermap.org/data/2.5/weather?q="+location+"&appid="+api_key
+api_link = requests.get(complete_api_link)
+api_data = api_link.json()
+temp_city = ((api_data['main']['temp']) - 273.15)
+weather_desc = api_data['weather'][0]['description']
+hmdt = api_data['main']['humidity']
+wind_spd = api_data['wind']['speed']
+date_time=datetime.now().strftine("%d %b %Y | %I:%M:%S %P")
+
+print ("")
+print ("Weather States for - {} || {}".format(location.upper(), date_time))
+print ("")
+
